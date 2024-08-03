@@ -21,7 +21,7 @@ class Api
             $leadData = [
                 $webhookData["name"],
                 $webhookData["id"],
-                $amocrmApi->getResponsible($webhookData["responsible_user_id"]),
+                $webhookData["responsible_user_id"], //$amocrmApi->getResponsible($webhookData["responsible_user_id"]), для вывода имени ответчика в таблицу
                 $webhookData["price"]
             ];
             $sheetId = \Illuminate\Support\Facades\Config::get('app.google_sheet_id');
