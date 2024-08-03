@@ -2,8 +2,8 @@
 <hr>
 <h3>Установка</h3>
 <ul>
-    <li>Скачать репозиторий: <i>git clone</i></li>
-    <li>Сгенерировать .env файл: <i>cp .env.example .env</i> и <i>php artisan key:generate</i></li>
+    <li>Скачать репозиторий: <code>git clone https://github.com/Ult1mateXPHP/tz_leadfactor.git</code></li>
+    <li>Сгенерировать .env файл: <code>cp .env.example .env</code> и <code>php artisan key:generate</code></li>
     <li>Создать интеграцию AmoCRM, получить ключ доступа и записать в env переменную <i>APP_AMOCRM_KEY</i></li>
     <li>Создать сервисный ключ доступа на Google Cloud и разместить его в соотвествии с env переменной <i>APP_GOOGLE_AUTH_CREDS</i></li>
     <li>Заполнить .env переменные</li>
