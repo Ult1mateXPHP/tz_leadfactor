@@ -4,28 +4,27 @@ namespace Infrastructure\GoogleClient;
 
 use Illuminate\Support\Facades\Config;
 
-class GoogleClient
+abstract class GoogleClient
 {
     /**
      * @return object
-     * @throws \Google\Exception
      */
-    private function getSheetsClient() : object
-    {
-        $client = new \Google_Client();
-        $client->setApplicationName('Google Sheets API');
-        $client->setScopes([\Google_Service_Sheets::SPREADSHEETS]);
-        $client->setAccessType('offline');
-        $path = Config::get('app.google_auth_creds');
-        $client->setAuthConfig($path);
-        return $client;
+    private function getClient() : object {
+        return new \Google_Client();
     }
 
     /**
      * @return object
      * @throws \Google\Exception
      */
-    public function sheets() : object {
-        return $this->getSheetsClient();
+    protected function getSheetsClient() : object
+    {
+        $client = $this->getClient();
+        $client->setApplicationName('Google Sheets API');
+        $client->setScopes([\Google_Service_Sheets::SPREADSHEETS]);
+        $client->setAccessType('offline');
+        $path = Config::get('app.google_auth_creds');
+        $client->setAuthConfig($path);
+        return $client;
     }
 }

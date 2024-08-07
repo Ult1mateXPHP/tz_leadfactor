@@ -3,7 +3,7 @@
 namespace Application\AmoCRM;
 
 use Infrastructure\AmoCRM\AmoCRMClient;
-use Infrastructure\GoogleClient\GoogleSheetsService;
+use Infrastructure\GoogleClient\API\GoogleSheetsMethods;
 
 class Api
 {
@@ -14,7 +14,7 @@ class Api
     public function sendLeadToGoogleSheet(array $webhookData) : void
     {
         $amocrmApi = new AmoCRMClient();
-        $googleSheetsApi = new GoogleSheetsService();
+        $googleSheetsApi = new GoogleSheetsMethods();
 
         $status = $amocrmApi->getStatus($webhookData["pipeline_id"], $webhookData["status_id"]);
         if ($status == "Успешно реализовано") {

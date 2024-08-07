@@ -1,16 +1,10 @@
 <?php
-namespace Infrastructure\GoogleClient;
+namespace Infrastructure\GoogleClient\API;
 
-class GoogleSheetsService extends GoogleClient
+use Infrastructure\GoogleClient\Service\GoogleSheetsService;
+
+class GoogleSheetsMethods extends GoogleSheetsService
 {
-    /**
-     * @return object
-     * @throws \Google\Exception
-     */
-    private function getService() : object {
-        return new \Google_Service_Sheets($this->sheets());
-    }
-
     /**
      * @param array $data
      * @param string $spreadsheetId
@@ -20,7 +14,7 @@ class GoogleSheetsService extends GoogleClient
     public function addNewRecord(array $data, string $spreadsheetId) : void {
         $rows = [$data];
         $service = $this->getService();
-        $valueRange = new \Google_Service_Sheets_ValueRange();
+        $valueRange = $this->getServiceValueRange();
         $valueRange->setValues($rows);
         $range = 'Лист1';
         $options = ['valueInputOption' => 'USER_ENTERED'];
